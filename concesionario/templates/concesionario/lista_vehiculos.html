@@ -23,7 +23,9 @@
                                ml-2"
                         style="width:30rem;"/>
                         {{ auto.nombre }} - {{ auto.precio }}
-                        <a href="{% url 'solicitar_cotizacion' 'auto' auto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'solicitar_cotizacion' 'auto' auto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% endif %}
                 </div>
             </div>
         </div>
@@ -45,7 +47,9 @@
                                ml-2"
                         style="width:30rem;"/>
                         {{ moto.nombre }} - {{ moto.precio }}
-                        <a href="{% url 'solicitar_cotizacion' 'moto' moto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'solicitar_cotizacion' 'moto' moto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% endif %}
                 </div>
             </div>
         </div>
@@ -67,7 +71,9 @@
                                ml-2"
                         style="width:30rem;"/>
                         {{ camioneta.nombre }} - {{ camioneta.precio }}
-                        <a href="{% url 'solicitar_cotizacion' 'camioneta' camioneta.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'solicitar_cotizacion' 'camioneta' camioneta.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                        {% endif %}
                 </div>
             </div>
         </div>
