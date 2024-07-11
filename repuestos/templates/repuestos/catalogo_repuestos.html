@@ -5,32 +5,26 @@
 <{% block content %}
 
 <body>
-    <h1>Repuestos</h1>
-    <ul>
-        {% for repuesto in repuestos %}
-        <div class=" container card mt-4 mb-4">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-m-6 bg-light-rounded">
-                        <img src="/media/{{ repuesto.imagen }}" 
-                            alt="{{ repuesto.nombre }}""
-                             class="card-img-top 
-                               text-center 
-                               justify-content-center 
-                               align-items-center
-                               mt-4
-                               ml-2"
-                        style="width:30rem;"/>
-                        {{ repuesto.nombre }} - {{ repuesto.precio }}
-                        <a href="{% url 'agregar_al_carrito' repuesto.id %}" class="button"><h2 class="mt-2 text-center">Agregar al Carrito</h2></a>
+    <h1 class="text-center my-5">Repuestos</h1>
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            {% for repuesto in repuestos %}
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                    <div class="card h-100">
+                        <img src="/media/{{ repuesto.imagen }}" class="card-img-top" alt="{{ repuesto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ repuesto.nombre }}</h5>
+                            <p class="card-text">{{ repuesto.precio }}</p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'agregar_al_carrito' repuesto.id %}" class="card-link">Agregar al Carrito</a>
+                                <a href="{% url 'ver_carrito' %}" class="card-link">Ir al carrito</a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </ul>
-    {% if user.is_authenticated %}
-        <a href="{% url 'ver_carrito' %}" class="button">Carrito</a>
-        <a href="{% url 'logout' %}" class="button">Cerrar Sesión</a>
-    {% endif %}
+    </div>
 </body>
 
 {%endblock%}
