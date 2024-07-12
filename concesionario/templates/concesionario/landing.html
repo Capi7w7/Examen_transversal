@@ -69,12 +69,34 @@
         </div>
     </header>
 
+    
+
     {% block content %}
 
 
+    <div id="carouselExampleControls" class="carousel container-fluid slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'concesionario/img/Royal_meteor.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'concesionario/img/2023-Chevrolet-Montana.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'concesionario/img/Sail-hb.jpeg' %}" class="d-block w-100 h-50" alt="...">
+          </div>
+        </div>
+      </div>
+    
+    <div class="bienvenida container">
+        <div class="content"">
+            <h5 class="mx-auto">Bienvenidos a Autos del Mar</h5>
+            <p>Vehiculos para cada estilo de vida</p>
+        </div>
+    </div>
 
-    <div class="datos container">
-        <div class="datos-body">
+    <div class="datos container ">
+        <div class="datos-body col-sm-3">
             <a href="https://maps.app.goo.gl/AYB1S7Xgu3wWKoca6"><i class="fa fa-store fa-2x"></i>
                 <h5 class="mt-0 mb-1">Ventas</h5>
             </a>
@@ -83,7 +105,7 @@
             <p>Sabado 10:00 a 14:00 hrs </p>
         </div>
 
-        <div class="datos-body">
+        <div class="datos-body col-sm-3">
             <a href="https://maps.app.goo.gl/D8pJjC4EV8SFDFpDA"><i class="fa fa-building fa-2x"></i>
                 <h5 class="mt-0 mb-1">Casa Central</h5>
             </a>
