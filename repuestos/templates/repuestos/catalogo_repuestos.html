@@ -1,9 +1,8 @@
-{%extends "concesionario/landing.html" %}
+{% extends "concesionario/landing.html" %}
 
-{%block title%} Catálogo de Repuestos {%endblock%}
+{% block title %} Catálogo de Repuestos {% endblock %}
 
-<{% block content %}
-
+{% block content %}
 <body>
     <h1 class="text-center my-5">Repuestos</h1>
     <div class="container-fluid mb-5">
@@ -16,8 +15,12 @@
                             <h5 class="card-title">{{ repuesto.nombre }}</h5>
                             <p class="card-text">{{ repuesto.precio }}</p>
                             {% if user.is_authenticated %}
-                                <a href="{% url 'agregar_al_carrito' repuesto.id %}" class="card-link">Agregar al Carrito</a>
-                                <a href="{% url 'ver_carrito' %}" class="card-link">Ir al carrito</a>
+                                <form action="{% url 'agregar_al_carrito' repuesto.id %}" method="post" class="add-to-cart-form" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="cantidad" value="1">
+                                    <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+                                </form>
+                                <a href="{% url 'ver_carrito' %}" class="btn btn-secondary">Ir al carrito</a>
                             {% endif %}
                         </div>
                     </div>
@@ -25,6 +28,25 @@
             {% endfor %}
         </div>
     </div>
-</body>
 
-{%endblock%}
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Producto Agregado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    El producto ha sido agregado al carrito exitosamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <a href="{% url 'ver_carrito' %}" class="btn btn-primary">Ir al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

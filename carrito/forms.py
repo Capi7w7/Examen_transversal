@@ -1,7 +1,7 @@
 from django import forms
-from .models import ItemCarrito
 
-class AgregarAlCarritoForm(forms.ModelForm):
-    class Meta:
-        model = ItemCarrito
-        fields = ['cantidad']
+class AgregarAlCarritoForm(forms.Form):
+    cantidad = forms.IntegerField(min_value=1, initial=1)
+
+class EliminarDelCarritoForm(forms.Form):
+    cantidad = forms.IntegerField(min_value=1, initial=1)
