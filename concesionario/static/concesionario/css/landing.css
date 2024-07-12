@@ -144,6 +144,7 @@ footer {
     border: 1px solid #e3e3e3;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 2px;
+    margin-bottom: 20px;
     padding: 2px;
     background: none;
 }
@@ -160,3 +161,14 @@ footer {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
+
+/*Carocel*/
+
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 6px solid;
+    max-height: 200px;
+    object-fit: cover;
+  }

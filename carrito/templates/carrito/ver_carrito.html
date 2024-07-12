@@ -10,7 +10,7 @@
     
     <ul>
         {% for item in carrito.repuestos.all %}
-            <li>{{ item.repuesto.nombre }} - {{ item.cantidad }}</li>
+            <li>{{ item.repuesto.nombre }} - Cantidad: {{ item.cantidad }}</li>
         {% endfor %}
     </ul>
     <a href="{% url 'catalogo_repuestos' %}" class="button">Seguir Comprando</a>

@@ -18,7 +18,9 @@
 <body>
 
     <div class="container">
-
+        <a href="{% url 'landing' %}" class="btn flex">
+            <i class="fas fa-home" style="color: white;"></i>
+        </a>
         {% block content %}
             <h1 class="container">Iniciar Sesión</h1>
             <form method="post">

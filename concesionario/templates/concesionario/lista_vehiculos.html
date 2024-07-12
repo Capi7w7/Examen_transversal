@@ -3,82 +3,79 @@
 {%block title%} Lista de Vehiculos {%endblock%}
 
 <{% block content %}
-    
-    <div class="titulo-catalago container" >
+
+
+
+    <div class="text-center my-5" >
         <h1>Lista de Vehículos</h1>
-    </div>    
-    <h2>Autos</h2>
-    <ul>
-        {% for auto in autos %}
-        <div class=" container card mt-4 mb-4">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-m-6 bg-light-rounded">
-                        <img src="{{ auto.imagen.url }}" 
-                             alt="{{ auto.nombre }}"
-                             class="card-img-top 
-                               text-center 
-                               justify-content-center 
-                               align-items-center
-                               mt-4
-                               ml-2"
-                        style="width:30rem;"/>
-                        {{ auto.nombre }} - {{ auto.precio }}
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'solicitar_cotizacion' 'auto' auto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
-                        {% endif %}
+    </div> 
+    
+    <h1 class="text-center my-5">Autos</h2>
+    <div class="container-fluid mb-5">
+        <div class="row justify-content-center mb-2">
+            {% for auto in autos %}
+            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-3 mb-3">
+                <div class="card h-100">
+                    <img src="{{ auto.imagen.url }}" class="card-img-top img-fluid" alt="{{ auto.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ auto.nombre }}</h5>
+                        <p class="card-text">{{ auto.precio }} CLP</p>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'solicitar_cotizacion' 'auto' auto.id %}" class="card-link"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                            {% endif %}
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </ul>
-    <h2>Motos</h2>
-    <ul>
-        {% for moto in motos %}
-        <div class=" container card mt-4 mb-4">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-m-6 bg-light-rounded">
-                        <img src="{{ moto.imagen.url }}" 
-                             alt="{{ moto.nombre }}"
-                             class="card-img-top 
-                               text-center 
-                               justify-content-center 
-                               align-items-center
-                               mt-4
-                               ml-2"
-                        style="width:30rem;"/>
-                        {{ moto.nombre }} - {{ moto.precio }}
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'solicitar_cotizacion' 'moto' moto.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
-                        {% endif %}
+    </div>
+    
+    <
+    <h1 class="text-center my-5">Motos</h2>
+        <div class="container-fluid mb-5">
+            <div class="row justify-content-center">
+                {% for moto in motos %}
+                <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-3">
+                    <div class="card h-100">
+                        <img src="{{ moto.imagen.url }}" class="card-img-top" alt="{{ moto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ moto.nombre }}</h5>
+                            <p class="card-text">{{ moto.precio }} CLP</p>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'solicitar_cotizacion' 'moto' moto.id %}" class="card-link"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                                {% endif %}
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
-    </ul>
-    <h2>Camionetas</h2>
-    <ul>
-        {% for camioneta in camionetas %}
-        <div class=" container card mt-4 mb-4">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-m-6 bg-light-rounded">
-                        <img src="{{ camioneta.imagen.url }}" 
-                             alt="{{ camioneta.nombre }}"
-                             class="card-img-top 
-                               text-center 
-                               justify-content-center 
-                               align-items-center
-                               mt-4
-                               ml-2"
-                        style="width:30rem;"/>
-                        {{ camioneta.nombre }} - {{ camioneta.precio }}
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'solicitar_cotizacion' 'camioneta' camioneta.id %}" class="button"><h2 class="mt-2 text-center">Cotizar</h2></a>
-                        {% endif %}
-                </div>
-            </div>
+
+
+    <h1 class="text-center my-5">Camionetas</h2>
+        <div class="container-fluid mb-5">
+            <div class="row justify-content-center">
+                {% for camioneta in camionetas %}
+                <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 col-xl-3 mb-3">
+                    <div class="card h-100">
+                        <img src="{{ camioneta.imagen.url }}" class="card-img-top" alt="{{ camioneta.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ camioneta.nombre }}</h5>
+                             <p class="card-text">{{ camioneta.precio }} CLP</p>
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'solicitar_cotizacion' 'camioneta' camioneta.id %}" class="card-link"><h2 class="mt-2 text-center">Cotizar</h2></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+             </div>
         </div>
-        {% endfor %}
-    </ul>
+       
+    
+
+    
+
 
 {%endblock%}
 
