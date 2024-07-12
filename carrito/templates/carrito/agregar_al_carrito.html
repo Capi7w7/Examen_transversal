@@ -1,14 +1,12 @@
-{%extends "autenticacion/login.html" %}
+{%extends "repuestos/catalogo_repuestos.html" %}
   
-{%block title%} Agregar_al_carrito {%endblock%} 
+{% block title %} Agregar al carrito {% endblock %}
 
-<{% block content %}
-
-    <h1 class="container">Agregar {{ repuesto.nombre }} al Carrito</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Agregar</button>
-    </form>
-
-{%endblock%}
+{% block content %}
+<h1>Agregar {{ repuesto.nombre }} al Carrito</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar al carrito</button>
+</form>
+{% endblock %}
