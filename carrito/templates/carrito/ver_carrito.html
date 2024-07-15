@@ -8,13 +8,17 @@
         <h1>Tu carrito</h1>
     </div> 
     
-    <table>
+    <table class="container datos">
         {% for item in cart %}
         <tr>
             <td>{{ item.repuesto.nombre }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.total_price }}</td>
+            <td></td>
+            <td></td>
+            <td>Cantidad: {{ item.quantity }}</td>
+            <td></td>
+            <td>Precio: {{ item.price }}</td>
+            <td></td>
+            <td>Total: {{ item.total_price }}</td>
             <td>
                 <form action="{% url 'eliminar_del_carrito' item.repuesto.id %}" method="post" class="form-inline">
                     {% csrf_token %}
@@ -27,7 +31,10 @@
         </tr>
         {% endfor %}
     </table>
-    <p>Total: {{ cart.get_total_price }}</p>
+    <div class="container datos">
+        <p>Total: {{ cart.get_total_price }}</p>
+    </div>
+    
 
     <a href="{% url 'catalogo_repuestos' %}" class="button">Seguir Comprando</a>
 
